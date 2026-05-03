@@ -10,7 +10,12 @@ const app = express();
 
 // ✅ CORS (ONLY ONCE)
 app.use(cors({
-  origin: "*"
+  origin: [
+    "http://localhost:5173",
+    "https://glitzora.vercel.app"
+  ],
+  methods: ["GET", "POST", "DELETE"],
+  allowedHeaders: ["Content-Type"]
 }));
 
 app.use(express.json());
