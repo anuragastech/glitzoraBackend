@@ -8,10 +8,17 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// ✅ CORS (ONLY ONCE)
+app.use(cors({
+  origin: "*"
+}));
+
 app.use(express.json());
+
+// static images
 app.use("/uploads", express.static("uploads"));
 
+// routes
 app.use("/api/products", require("./routes/ProductRoutes"));
 
 app.listen(5000, () => console.log("Server running on port 5000"));
